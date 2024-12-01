@@ -13,5 +13,6 @@ export const dynStyles = (isMobile: boolean) => {
 export const styles = {
   body: {
     color: 'white',
+    textTransform: 'capitalize',
   },
 };

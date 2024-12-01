@@ -1,4 +1,4 @@
-import { collection, query, getDocs, where } from 'firebase/firestore';
+import { collection, query, getDocs, where, orderBy } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 
 const DB_NAME = 'location';
@@ -23,7 +23,11 @@ export const getProvinces = async (): Promise<string[]> => {
 
 export const getCities = async (province: string): Promise<string[]> => {
   try {
-    const q = query(collection(db, DB_NAME), where('province', '==', province));
+    const q = query(
+      collection(db, DB_NAME),
+      where('province', '==', province),
+      orderBy('city')
+    );
 
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) return [];

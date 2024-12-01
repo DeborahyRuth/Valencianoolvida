@@ -53,8 +53,8 @@ export const getAffected = async ({
     if (searchQuery.trim()) {
       q = query(
         q,
-        where('fullName', '>=', searchQuery),
-        where('fullName', '<=', searchQuery + '\uf8ff')
+        where('fullName', '>=', searchQuery.toLowerCase()),
+        where('fullName', '<=', searchQuery.toLowerCase() + '\uf8ff')
       );
     }
 

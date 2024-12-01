@@ -99,9 +99,9 @@ const ListPeople = ({ filters, handleSubmit }: IProps): JSX.Element => {
   useEffect(() => {
     setDeceasedData([]);
     setMissingData([]);
-    if (tab === 0 && filters.city !== deceasedData?.[0]?.city) {
+    if (tab === 0) {
       fetchDeceasedData(true);
-    } else if (tab === 1 && filters.city !== missingData?.[0]?.city) {
+    } else if (tab === 1) {
       fetchMissingData(true);
     }
   }, [filters]);

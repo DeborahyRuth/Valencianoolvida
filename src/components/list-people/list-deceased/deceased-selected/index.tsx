@@ -42,7 +42,7 @@ const DeceasedSelected = ({ deceased, index }: IProps): JSX.Element => {
         </Grid2>
         <Grid2 size={{ md: 8 }} width='100%'>
           <CardContent>
-            <Typography variant='h3'>{deceased.fullName}</Typography>
+            <Typography variant='h3' sx={styles.fullName}>{deceased.fullName}</Typography>
             {deceased?.nickname && (
               <Typography variant='subtitle1'>{deceased.nickname}</Typography>
             )}

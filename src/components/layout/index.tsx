@@ -78,6 +78,7 @@ const Layout = ({ children }: IProps): JSX.Element => {
               direction={{ xs: 'column-reverse', md: 'row' }}
               justifyContent='space-between'
               alignItems='center'
+              width='100%'
             >
               <Stack direction='row'>
                 <Button variant='text'>Aviso Legal</Button>

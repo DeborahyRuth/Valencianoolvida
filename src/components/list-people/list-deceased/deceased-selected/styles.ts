@@ -22,4 +22,7 @@ export const styles = {
     wordWrap: 'break-word',
     whiteSpace: 'pre-line',
   },
+  fullName: {
+    textTransform: 'capitalize',
+  },
 };
