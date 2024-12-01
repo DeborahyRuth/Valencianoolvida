@@ -56,6 +56,10 @@ const Filters = ({ filters, handleSubmit }: IProps): JSX.Element => {
     if (provinceFilter) fetchCitiesData();
   }, [provinceFilter]);
 
+  useEffect(() => {
+    setProvinceFilter(provinces[0]);
+  }, [provinces]);
+
   const onClickCity = (city: string) => {
     setCityFilter(city);
     handleSubmit(personFilter, provinceFilter, city);

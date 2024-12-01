@@ -5,36 +5,16 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 
-import Filters from '../components/filters';
-import ListPeople from '../components/list-people';
 import { dynStyles, styles } from '../styles/home/styles';
-import { IFilters } from '../types/interfaces';
+import Link from 'next/link';
 
 const Home = (): JSX.Element => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const [showFilters, setShowFilters] = useState<boolean>(false);
-  const [showList, setShowList] = useState<boolean>(false);
-  const [filters, setFilters] = useState<IFilters>({
-    person: '',
-    province: '',
-    city: '',
-  });
-
   const { button } = dynStyles(isMobile);
-
-  const handleSubmit = (person: string, province: string, city: string) => {
-    setFilters({
-      person,
-      province,
-      city,
-    });
-    setShowFilters(false);
-    setShowList(true);
-  };
 
   return (
     <Grid2
@@ -44,7 +24,7 @@ const Home = (): JSX.Element => {
       spacing={2}
       sx={styles.root}
     >
-      <Typography sx={styles.h1} variant='h1'>
+      <Typography sx={styles.title} variant='h1' component={Link} href='/'>
         Valencia no olvida.
       </Typography>
       <Typography
@@ -54,20 +34,12 @@ const Home = (): JSX.Element => {
       >
         WEB DEDICADA A LOS FALLECIDOS Y DESAPARECIDOS POR LA DANA EN VALENCIA
       </Typography>
-      {!showFilters && !showList && (
-        <Button
-          sx={button}
-          variant='contained'
-          onClick={() => setShowFilters(true)}
-        >
-          Buscar
-        </Button>
-      )}
+      <Button sx={button} variant='contained' href='/search'>
+        Buscar
+      </Button>
       <Button href='/register' sx={button} variant='outlined'>
         Registrar
       </Button>
-      {showFilters && <Filters handleSubmit={handleSubmit} />}
-      {showList && <ListPeople filters={filters} handleSubmit={handleSubmit} />}
     </Grid2>
   );
 };

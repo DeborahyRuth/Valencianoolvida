@@ -11,6 +11,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 import { dynStyles, styles } from '../../styles/register/styles';
+import Link from 'next/link';
 
 const Register = (): JSX.Element => {
   const theme = useTheme();
@@ -29,7 +30,8 @@ const Register = (): JSX.Element => {
       <Typography
         variant='subtitle1'
         sx={styles.subtitle1}
-        display={{ xs: 'none', md: 'flex' }}
+        component={Link}
+        href='/'
       >
         Dana de 2024
       </Typography>
@@ -103,7 +105,7 @@ const Register = (): JSX.Element => {
           <Typography>602678162</Typography>
         </Stack>
       </Stack>
-      <Button variant='outlined' href='/' sx={button}>
+      <Button variant='outlined' href='/search' sx={button}>
         Ver damnificados
       </Button>
     </Grid2>

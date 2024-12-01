@@ -92,6 +92,15 @@ const Layout = ({ children }: IProps): JSX.Element => {
               </Stack>
               <Stack direction='row'>
                 <Button variant='text' href='/'>
+                  Inicio
+                </Button>
+                <Divider
+                  flexItem
+                  orientation='vertical'
+                  variant='middle'
+                  sx={styles.divider}
+                />
+                <Button variant='text' href='/search'>
                   Buscar
                 </Button>
                 <Divider

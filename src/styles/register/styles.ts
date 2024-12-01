@@ -25,6 +25,7 @@ export const styles = {
   subtitle1: {
     textTransform: 'uppercase',
     color: 'white',
+    textDecoration: 'none',
   },
   icon: {
     color: 'white',
