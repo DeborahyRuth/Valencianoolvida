@@ -76,7 +76,7 @@ export const getAffected = async ({
 
     for (const doc of querySnapshot.docs) {
       let affected = doc.data() as IAffected;
-      if (doc.data().images) {
+      if (doc.data()?.images && doc.data()?.images.length) {
         const images = await Promise.all(
           doc.data()?.images.map(async (image: string) => {
             const storageRef = ref(storage, image);
