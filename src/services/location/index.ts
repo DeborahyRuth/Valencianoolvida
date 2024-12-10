@@ -4,7 +4,7 @@ import { db } from '../../config/firebase';
 const DB_NAME = 'location';
 export const getProvinces = async (): Promise<string[]> => {
   try {
-    const q = query(collection(db, DB_NAME));
+    const q = query(collection(db, DB_NAME), where('register', '==', true));
 
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) return [];

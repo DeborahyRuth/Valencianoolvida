@@ -27,7 +27,6 @@ const Layout = ({ children }: IProps): JSX.Element => {
   const { container, main } = dynStyles(isMobile);
 
   const handleClick = (filePath: string) => {
-    console.log('hey');
     const url = `${window.location.origin}/${filePath}.pdf`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };

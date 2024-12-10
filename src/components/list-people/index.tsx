@@ -49,9 +49,11 @@ const ListPeople = ({ filters, handleSubmit }: IProps): JSX.Element => {
   const [lastMissingVisible, setLastMissingVisible] = useState<string | null>(
     null
   );
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchDeceasedData = async (concat: boolean, loadMore = false) => {
     try {
+      setLoading(true);
       const response = await getAffected({
         db_name: 'deceased',
         city: filters.city,
@@ -68,6 +70,7 @@ const ListPeople = ({ filters, handleSubmit }: IProps): JSX.Element => {
       else setDeceasedData(response.affectedData);
       setLastDeceasedVisible(response.lastVisible);
       setIsLastDeceasedPage(response.isLastPage);
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching deceased data:', error);
     }
@@ -75,6 +78,7 @@ const ListPeople = ({ filters, handleSubmit }: IProps): JSX.Element => {
 
   const fetchMissingData = async (concat: boolean, loadMore = false) => {
     try {
+      setLoading(true);
       const response = await getAffected({
         db_name: 'missing',
         city: filters.city,
@@ -91,6 +95,7 @@ const ListPeople = ({ filters, handleSubmit }: IProps): JSX.Element => {
       else setMissingData(response.affectedData);
       setLastMissingVisible(response.lastVisible);
       setIsLastMissingPage(response.isLastPage);
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching missing data:', error);
     }
@@ -208,6 +213,7 @@ const ListPeople = ({ filters, handleSubmit }: IProps): JSX.Element => {
         </Stack>
       </Stack>
       <Divider sx={styles.divider} />
+      {loading && <Typography variant='h4' sx={styles.loading}>Cargando...</Typography>}
       {tab === 0 && deceasedData !== undefined && (
         <>
           <ListDeceased deceasedData={deceasedData} />
@@ -222,13 +228,20 @@ const ListPeople = ({ filters, handleSubmit }: IProps): JSX.Element => {
           {!isLastMissingPage && <Button onClick={loadMore}>Cargar más</Button>}
         </>
       )}
+
       <Modal
         open={open}
         onClose={() => setOpen(false)}
         sx={styles.modalContainer}
       >
         <Box sx={styles.box}>
-          <Filters filters={filters} handleSubmit={onSubmit} />
+          <Filters
+            filters={{
+              ...filters,
+              province: filters.province === 'all' ? '' : filters.province,
+            }}
+            handleSubmit={onSubmit}
+          />
         </Box>
       </Modal>
     </Container>

@@ -40,6 +40,9 @@ export const styles = {
     alignItems: 'center',
     justifyContent: 'center',
   },
+  loading: {
+    justifySelf: 'center',
+  },
   box: {
     position: 'absolute',
     top: '50%',
