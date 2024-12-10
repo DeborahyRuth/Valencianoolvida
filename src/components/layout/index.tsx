@@ -26,6 +26,12 @@ const Layout = ({ children }: IProps): JSX.Element => {
 
   const { container, main } = dynStyles(isMobile);
 
+  const handleClick = (filePath: string) => {
+    console.log('hey');
+    const url = `${window.location.origin}/${filePath}.pdf`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
@@ -81,14 +87,18 @@ const Layout = ({ children }: IProps): JSX.Element => {
               width='100%'
             >
               <Stack direction='row'>
-                <Button variant='text'>Aviso Legal</Button>
+                <Button onClick={() => handleClick('legal')} variant='text'>
+                  Aviso Legal
+                </Button>
                 <Divider
                   flexItem
                   orientation='vertical'
                   sx={styles.divider}
                   variant='middle'
                 />
-                <Button variant='text'>Politica de privacidad</Button>
+                <Button onClick={() => handleClick('privacy')} variant='text'>
+                  Politica de privacidad
+                </Button>
               </Stack>
               <Stack direction='row'>
                 <Button variant='text' href='/'>
