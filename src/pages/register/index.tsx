@@ -33,7 +33,7 @@ const Register = (): JSX.Element => {
         component={Link}
         href='/'
       >
-        Dana de 2024
+        Volver a Inicio
       </Typography>
       <Typography variant='h2' sx={styles.typography} textAlign='center'>
         Registro de damnificados.
