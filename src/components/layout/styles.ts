@@ -11,6 +11,7 @@ export const dynStyles = (isMobile: boolean) => {
       minHeight: isMobile ? 'calc(100vh - 220px)' : 'calc(100vh - 100px)',
       padding: '32px',
       maxWidth: '1000px',
+      margin: '16px auto'
     },
   };
 };

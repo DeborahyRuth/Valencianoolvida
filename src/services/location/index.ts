@@ -26,6 +26,7 @@ export const getCities = async (province: string): Promise<string[]> => {
     const q = query(
       collection(db, DB_NAME),
       where('province', '==', province),
+      where('register', '==', true),
       orderBy('city')
     );
 

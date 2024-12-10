@@ -53,6 +53,7 @@ const Filters = ({ filters, handleSubmit }: IProps): JSX.Element => {
   }, []);
 
   useEffect(() => {
+    if(provinceFilter === 'all') handleSubmit(personFilter, provinceFilter, '');
     if (provinceFilter) fetchCitiesData();
   }, [provinceFilter]);
 
@@ -103,6 +104,7 @@ const Filters = ({ filters, handleSubmit }: IProps): JSX.Element => {
                 setLocationFilter={(province: string) =>
                   setProvinceFilter(province)
                 }
+                showTotal={true}
               />
             </Grid2>
             <Grid2 size={{ xs: 0, md: 1 }}>

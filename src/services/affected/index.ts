@@ -11,6 +11,7 @@ import {
 import { ref, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../../config/firebase';
 import { IAffected } from '../../types/interfaces';
+import { register } from 'module';
 
 interface IAffectedQuery {
   db_name: string;
@@ -40,11 +41,14 @@ export const getAffected = async ({
   loadMore,
 }: IAffectedQuery): Promise<IAffectedResponse> => {
   try {
-    let q = query(
-      collection(db, db_name),
-      where('city', '==', city),
-      where('province', '==', province)
-    );
+    let q = query(collection(db, db_name));
+    if (province !== 'all') {
+      q = query(
+        q,
+        where('city', '==', city),
+        where('province', '==', province)
+      );
+    }
 
     if (person !== 'both') {
       q = query(q, where('person', '==', person === 'people'));

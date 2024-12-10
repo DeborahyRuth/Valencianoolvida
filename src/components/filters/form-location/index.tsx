@@ -7,12 +7,14 @@ interface IProps {
   locations: string[];
   locationFilter: string;
   setLocationFilter: (location: string) => void;
+  showTotal?: boolean;
 }
 
 const FormLocation = ({
   locations,
   locationFilter,
   setLocationFilter,
+  showTotal = false,
 }: IProps): JSX.Element => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -21,6 +23,16 @@ const FormLocation = ({
 
   return (
     <FormControl sx={formControl}>
+      {showTotal && (
+        <Button
+          onClick={() => setLocationFilter('all')}
+          variant={locationFilter === 'all' ? 'contained' : 'outlined'}
+          color='primary'
+          sx={button}
+        >
+          Totales
+        </Button>
+      )}
       {locations.map((location) => (
         <Button
           key={location}

@@ -34,6 +34,14 @@ const AccordionLocation = ({
   };
   return (
     <FormControl sx={formControl}>
+      <Button
+        onClick={() => handleAccordion('all')}
+        variant={provinceFilter === 'all' ? 'contained' : 'outlined'}
+        color='primary'
+        sx={button}
+      >
+        Totales
+      </Button>
       {provinces.map((province, index) => (
         <div key={index}>
           <Button

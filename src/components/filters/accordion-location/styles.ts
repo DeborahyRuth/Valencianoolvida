@@ -10,6 +10,7 @@ export const dynStyles = (isMobile: boolean) => {
       },
     },
     formControl: {
+      alignItems: 'center',
       maxHeight: isMobile ? 'auto' : '267px',
       textAlign: 'center'
     },
