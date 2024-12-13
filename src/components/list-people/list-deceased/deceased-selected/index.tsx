@@ -38,7 +38,7 @@ const DeceasedSelected = ({ deceased, index }: IProps): JSX.Element => {
           <Typography
             variant='body1'
             sx={styles.body}
-          >{`#${index}`}</Typography>
+          >{`#${index+1}`}</Typography>
         </Grid2>
         <Grid2 size={{ md: 8 }} width='100%'>
           <CardContent>
@@ -59,7 +59,7 @@ const DeceasedSelected = ({ deceased, index }: IProps): JSX.Element => {
           <Typography
             variant='body1'
             sx={styles.body}
-          >{`#${index}`}</Typography>
+          >{`#${index+1}`}</Typography>
         </Grid2>
       </Grid2>
     </Card>

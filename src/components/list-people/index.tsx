@@ -213,7 +213,11 @@ const ListPeople = ({ filters, handleSubmit }: IProps): JSX.Element => {
         </Stack>
       </Stack>
       <Divider sx={styles.divider} />
-      {loading && <Typography variant='h4' sx={styles.loading}>Cargando...</Typography>}
+      {loading && (
+        <Typography variant='h4' sx={styles.loading}>
+          Cargando...
+        </Typography>
+      )}
       {tab === 0 && deceasedData !== undefined && (
         <>
           <ListDeceased deceasedData={deceasedData} />

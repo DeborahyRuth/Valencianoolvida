@@ -51,7 +51,7 @@ const List = (): JSX.Element => {
         component={Link}
         href='/'
       >
-        Dana de 2024
+        Volver a Inicio
       </Typography>
       <Typography sx={h1} variant='h1'>
         Lista de defunciones y desapariciones.

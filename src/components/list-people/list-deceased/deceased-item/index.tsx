@@ -34,7 +34,7 @@ const DeceasedItem = ({ deceased, index }: IProps): JSX.Element => {
             <Typography
               variant='body1'
               sx={styles.body}
-            >{`#${index}`}</Typography>
+            >{`#${index+1}`}</Typography>
           </Stack>
         }
       />
